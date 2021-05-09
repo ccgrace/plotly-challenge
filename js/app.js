@@ -102,7 +102,7 @@ function gaugePlot(subject) {
         title: "Belly Button Washing Frequency"
     };
 
-    Plotly.newplot("gauge", data, layout);
+    Plotly.newPlot("gauge", data, layout);
 };
 
 // Displays metadata by clearing the html of the div then doing a for loop to pass the key and value for the subject
