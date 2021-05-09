@@ -73,8 +73,8 @@ function bubblePlot(subject) {
     Plotly.newPlot("bubble", data, layout);
 };
 
+// Creates a gauge plot with stepping color codes for washed per week
 function gaugePlot(subject) {
-
     let trace3 = {
         domain: {x: [0,1], y: [0,1]},
         value: subject.wfreq,
