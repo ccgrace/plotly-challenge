@@ -1,13 +1,13 @@
 d3.json("./data/samples.json").then((data) => {
-    dropDown(data.names);
+    dropDown(data.names);   //These functions are used to initialize the dashboard
     barPlot(data.samples[0]);
     bubblePlot(data.samples[0]);
     metaData(data.metadata[0])
 
     let selectedSubject = d3.select("#selDataset");
-    selectedSubject.on("change",function() {
-    var subject = selectedSubject.property("value")
-    var sbjIndex = data.names.indexOf(subject)
+    selectedSubject.on("change",function() {        //creates an on-change function to update the visualizations based on subject
+    var subject = selectedSubject.property("value") //pulls the subject nuber that is selected
+    var sbjIndex = data.names.indexOf(subject)  //uses the value of "names" to identify the index so that it can be referenced in the functions below
 
     dropDown(data.names);
     barPlot(data.samples[sbjIndex]);
