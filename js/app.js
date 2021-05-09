@@ -66,3 +66,13 @@ function metaData(subject) {
         let metaData = sample_metaData.append("p").text(`${key}: ${value}`);
     });
 }
+
+// Creates an on-change function to perform data functions based on chosen Subject ID
+let selectedSubject = d3.select("#selDataset");
+selectedSubject.on("change",function() {
+    var subject = selectedSubject.property("value")
+    // console.log(subject)
+});
+
+let sbjIndex = data.names.indexOf(subject);
+console.log(sbjIndex);
