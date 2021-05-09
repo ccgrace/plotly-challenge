@@ -2,7 +2,9 @@ d3.json("./data/samples.json").then((data) => {
     dropDown(data.names);   //These functions are used to initialize the dashboard
     barPlot(data.samples[0]);
     bubblePlot(data.samples[0]);
-    metaData(data.metadata[0])
+    gaugePlot(data.metadata[0]);
+    metaData(data.metadata[0]);
+    
 
     let selectedSubject = d3.select("#selDataset");
     selectedSubject.on("change",function() {        //creates an on-change function to update the visualizations based on subject
@@ -12,7 +14,8 @@ d3.json("./data/samples.json").then((data) => {
     dropDown(data.names);
     barPlot(data.samples[sbjIndex]);
     bubblePlot(data.samples[sbjIndex]);
-    metaData(data.metadata[sbjIndex])
+    gaugePlot(data.metadata[sbjIndex]);
+    metaData(data.metadata[sbjIndex]);
     })
 });
 
@@ -68,6 +71,38 @@ function bubblePlot(subject) {
     };
 
     Plotly.newPlot("bubble", data, layout);
+};
+
+function gaugePlot(subject) {
+
+    let trace3 = {
+        domain: {x: [0,1], y: [0,1]},
+        value: subject.wfreq,
+        title: {text: "Scrubs per Week"},
+        type: "indicator",
+        mode: "gauge",
+        gauge: {axis: {range: [null, 9]},
+                steps: [
+                    {range: [0, 1], color: "#ffffff"},
+                    {range: [1, 2], color: "#ccffff"},
+                    {range: [2, 3], color: "#99ffff"},
+                    {range: [3, 4], color: "#66ffff"},
+                    {range: [4, 5], color: "#33ffff"},
+                    {range: [5, 6], color: "#00ffff"},
+                    {range: [6, 7], color: "#00cccc"},
+                    {range: [7, 8], color: "#009999"},
+                    {range: [8, 9], color: "#006666"}
+                    ]
+                }
+    };
+
+    var data = [trace3];
+
+    var layout = {
+        title: "Belly Button Washing Frequency"
+    };
+
+    Plotly.newplot("gauge", data, layout);
 };
 
 // Displays metadata by clearing the html of the div then doing a for loop to pass the key and value for the subject
