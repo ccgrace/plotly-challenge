@@ -1,7 +1,8 @@
 d3.json("./data/samples.json").then((data) => {
-    dropDown(data.names)
-    barPlot(data.samples[0])
-    bubblePlot(data.samples[0])
+    dropDown(data.names);
+    barPlot(data.samples[0]);
+    bubblePlot(data.samples[0]);
+    metaData(data.metadata[0])
 });
 
 
@@ -33,6 +34,7 @@ function barPlot(subject) {
     Plotly.newPlot("bar", data, layout);
 };
 
+// Creates bubbleplot using simple refereneces to data elemnts
 function bubblePlot(subject) {
     var xValue = subject.otu_ids;
     var yValue = subject.sample_values;
@@ -56,3 +58,11 @@ function bubblePlot(subject) {
 
     Plotly.newPlot("bubble", data, layout);
 };
+
+// Displays metadata by clearing the html of the div then doing a for loop to pass the key and value for the subject
+function metaData(subject) {
+    sample_metaData = d3.select("#sample-metadata").html("")
+    Object.entries(subject).forEach(([key, value])=> {
+        let metaData = sample_metaData.append("p").text(`${key}: ${value}`);
+    });
+}
