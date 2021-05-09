@@ -81,7 +81,7 @@ function gaugePlot(subject) {
         title: {text: "Scrubs per Week"},
         type: "indicator",
         mode: "gauge",
-        gauge: {axis: {range: [null, 9]},
+        gauge: {axis: {range: [null, 9], tickwidth: 1},
                 steps: [
                     {range: [0, 1], color: "#ffffff"},
                     {range: [1, 2], color: "#ccffff"},
