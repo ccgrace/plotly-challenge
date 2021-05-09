@@ -40,12 +40,12 @@ function bubblePlot(subject) {
     let trace2 = {
         x: xValue,
         y: yValue,
-        text: subject.otu_labels
+        text: subject.otu_labels,
         mode: "markers",
         marker: {
             color: subject.otu_ids,
             size: subject.sample_values,
-        };
+        }
     };
 
     var data = [trace2]
